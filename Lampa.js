@@ -1,34 +1,37 @@
 class Lampa {
   #allapot;
   #id;
-  #divElem;
+  divElem;
   constructor(id, allapot, szuloElem) {
     this.#id = id;
-    this.#allapot = true;
+    this.#allapot = allapot;
     //this.szuloElem = szuloElem;
+   // console.log(this.#allapot);
     szuloElem.append(`<div class="egylampa"></div>`);
     this.divElem = $(`article div:last-child`);
-    this.#divElem.on("click", () => {
-      this.#kattintasTrigger();
+    this.szinBeallit();
+    //console.log(this.divElem);
+    this.divElem.on("click", () => {
+      this.kattintasTrigger();
     });
+    
   }
   setAllapot() {
-    szinBeallit();
+    this.szinBeallit();
   }
 
-  #szinBeallit() {
+  szinBeallit() {
     //$(selector).attr(attribute,function(index,currentvalue))
-
-    if(this.#allapot == true){
-        $(this.#divElem) = $(`article div:last-child`);
+    //console.log(this.divElem);
+    if (this.#allapot == true) {
+      $(this.divElem).css("background-color", "green");
+    } else {
+      $(this.divElem).css("background-color", "yellow");
     }
-    else{
-        $(this.#divElem) = $(`article div:last-child`);
-    }
-
   }
-  #kattintasTrigger() {
-    const esmeny = new CustomEvent("kapcsolas", {
+
+  kattintasTrigger() {
+    const esemeny = new CustomEvent("kapcsolas", {
       detail: this,
     });
     window.dispatchEvent(esemeny);

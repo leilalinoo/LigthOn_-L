@@ -1,4 +1,10 @@
-.egyelem{
+article{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.egylampa{
     border: 2px solid black;
-    width: 50px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }
